@@ -1,0 +1,30 @@
+{
+    "executable_name": "champsim_bipt",
+    "branch_predictor": "bipt",
+    "btb": "normal_btb",
+    "L1I": {
+        "prefetcher": "no",
+        "replacement": "lru"
+    },
+    "L1D": {
+        "prefetcher": "no",
+        "replacement": "lru"
+    },
+    "L2C": {
+        "prefetcher": "no",
+        "replacement": "lru"
+    },
+    "LLC": {
+        "prefetcher": "no",
+        "replacement": "lru"
+    },
+    "ITLB": {
+        "replacement": "lru"
+    },
+    "DTLB": {
+        "replacement": "lru"
+    },
+    "STLB": {
+        "replacement": "lru"
+    }
+}
