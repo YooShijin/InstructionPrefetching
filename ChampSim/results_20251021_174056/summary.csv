@@ -1,0 +1,7 @@
+Predictor,Trace,IPC,Branch_MPKI,ROB_Occupancy,L1I_MPKI,L1D_MPKI,L2C_MPKI,LLC_MPKI,Duration_sec
+btip,server_001,0.7876,8.97,94.74%,N/A,N/A,N/A,N/A,276
+btip,server_025,1.188,16.55,90.95%,N/A,N/A,N/A,N/A,238
+fdip,server_001,0.7876,8.97,94.74%,N/A,N/A,N/A,N/A,275
+fdip,server_025,1.188,16.55,90.95%,N/A,N/A,N/A,N/A,236
+no,server_001,0.7876,8.97,94.74%,N/A,N/A,N/A,N/A,276
+no,server_025,1.188,16.55,90.95%,N/A,N/A,N/A,N/A,242

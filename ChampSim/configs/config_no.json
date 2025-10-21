@@ -1,0 +1,9 @@
+{
+    "executable_name": "champsim_no",
+    "branch_predictor": "bimodal",
+    "btb": "basic_btb",
+    "L1I": {
+        "prefetcher": "no",
+        "replacement": "lru"
+    }
+}

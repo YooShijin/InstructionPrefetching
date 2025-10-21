@@ -1,0 +1,54 @@
+#include "btip.h"
+
+#include "cache.h"
+
+uint32_t btip::prefetcher_cache_operate(champsim::address addr, champsim::address ip, uint8_t cache_hit, bool useful_prefetch, access_type type,
+                                        uint32_t metadata_in)
+{
+  champsim::block_number cl_addr{addr};
+  champsim::block_number::difference_type stride = 0;
+
+  auto found = table.check_hit({ip, cl_addr, stride});
+
+  if (found.has_value()) {
+    stride = champsim::offset(found->last_cl, cl_addr);
+    if (stride != 0 && stride == found->last_stride && found->confidence > 1) {
+      active_lookahead = {champsim::address{cl_addr}, stride, PREFETCH_DEGREE};
+    }
+    if (cache_hit)
+      found->confidence = std::min<uint8_t>(found->confidence + 1, 7);
+    else
+      found->confidence = found->confidence > 0 ? found->confidence - 1 : 0;
+  }
+
+  table.fill({ip, cl_addr, stride, 0});
+  return metadata_in;
+}
+
+void btip::prefetcher_cycle_operate()
+{
+  if (!active_lookahead.has_value())
+    return;
+
+  auto [old_pf_address, stride, degree] = active_lookahead.value();
+  if (degree <= 0) {
+    active_lookahead.reset();
+    return;
+  }
+
+  champsim::address pf_address{champsim::block_number{old_pf_address} + stride};
+  bool mshr_under_light_load = intern_->get_mshr_occupancy_ratio() < 0.5;
+
+  if (intern_->virtual_prefetch || champsim::page_number{pf_address} == champsim::page_number{old_pf_address}) {
+    if (prefetch_line(pf_address, mshr_under_light_load, 0)) {
+      active_lookahead = {pf_address, stride, degree - 1};
+    }
+  } else {
+    active_lookahead.reset();
+  }
+}
+
+uint32_t btip::prefetcher_cache_fill(champsim::address addr, long set, long way, uint8_t prefetch, champsim::address evicted_addr, uint32_t metadata_in)
+{
+  return metadata_in;
+}

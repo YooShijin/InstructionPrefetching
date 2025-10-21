@@ -1,13 +1,13 @@
-#ifndef BRANCH_FIDP_H
-#define BRANCH_FIDP_H
+#ifndef BRANCH_FDIP_H
+#define BRANCH_FDIP_H
 
 #include <array>
 #include <algorithm>
 #include "address.h"
 #include "modules.h"
 
-// Minimal FIDP: Fetch-directed Indirect Predictor
-class fidp : public champsim::modules::branch_predictor
+// Minimal FDIP: Fetch-directed Indirect Predictor
+class fdip : public champsim::modules::branch_predictor
 {
 private:
     static constexpr size_t TABLE_SIZE = 1024;

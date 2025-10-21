@@ -1,0 +1,25 @@
+Branch Predictor Comparison Report
+Generated: Tue Oct 21 04:09:23 PM IST 2025
+========================================
+
+Configuration:
+- Warmup Instructions: 25000000
+- Simulation Instructions: 25000000
+- Traces: 2
+- Predictors: bipt fdip no
+- Total Runtime: 0h 29m 52s
+
+Traces Used:
+  - server_001.champsimtrace.xz
+  - server_025.champsimtrace.xz
+
+Results Summary:
+================
+
+Predictor  Trace       IPC     Branch_MPKI  L1I_MPKI  Duration_sec
+bipt       server_001  0.5817  88.78        N/A       308
+bipt       server_025  0.8177  64.85        N/A       270
+fdip       server_001  0.5519  101.6        N/A       336
+fdip       server_025  0.7303  79.94        N/A       286
+no         server_001  0.7876  8.97         N/A       283
+no         server_025  1.188   16.55        N/A       243

@@ -1,0 +1,4 @@
+Predictor,Trace,IPC,Branch_MPKI,L1I_MPKI,Duration_sec
+bipt,server_001,0.5817,88.78,N/A,309
+bipt,server_025,0.8177,64.85,N/A,271
+no,server_001,0.7876,8.97,N/A,276
