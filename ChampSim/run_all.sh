@@ -22,16 +22,14 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BASE_RESULTS_DIR="results_${TIMESTAMP}"
 
 # Predictors list
-PREDICTORS=("btip" "fdip" "no")
+PREDICTORS=("fdip" "no")
 
 # Trace selection mode: "auto", "specific", or "all"
 TRACE_SELECTION_MODE="specific"
 
 # Specific traces to use
 SPECIFIC_TRACES=(
-    "spec_x264_001.champsimtrace.xz"
-    "spec_perlbench_001.champsimtrace.xz"
-    
+    "spec_x264_001.champsimtrace.xz"    
 )
 
 # ---- Display Header ----
